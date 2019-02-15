@@ -37,7 +37,7 @@ namespace WcfServiceSample.Implementation
 
             if (acc == null)
             {
-                Trace.WriteLine($"Error when execute CheckToken: user not found {request.UserId}");
+                Trace.WriteLine($"Error when execute {typeof(Res).Name}: user not found {request.UserId}");
                 return Tuple.Create<SessionData, AccountData, Res>(null, null, new Res()
                 {
                     IsSuccess = false,

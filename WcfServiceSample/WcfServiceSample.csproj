@@ -72,7 +72,9 @@
     <Compile Include="BaseContracts\ErrorDetails.cs" />
     <Compile Include="DataMock\AccountData.cs" />
     <Compile Include="DataMock\AccountTable.cs" />
+    <Compile Include="DataMock\eOrderStatus.cs" />
     <Compile Include="DataMock\eUserRole.cs" />
+    <Compile Include="DataMock\OrderData.cs" />
     <Compile Include="DataMock\SessionData.cs" />
     <Compile Include="DataMock\SessionStorage.cs" />
     <Compile Include="Implementation\AccountService.cs" />
@@ -82,12 +84,19 @@
     <Compile Include="Interfaces\AccountService\Contracts\Login\LoginRequest.cs" />
     <Compile Include="Interfaces\AccountService\Contracts\Login\LoginResponse.cs" />
     <Compile Include="Interfaces\AccountService\IAccountService.cs" />
+    <Compile Include="Interfaces\OrdersService\Contracts\CompleteOrder\CompleteOrderRequest.cs" />
+    <Compile Include="Interfaces\OrdersService\Contracts\DiscardOrder\DiscardOrderRequest.cs" />
+    <Compile Include="Interfaces\OrdersService\Contracts\CreateOrder\CreateOrderRequest.cs" />
+    <Compile Include="Interfaces\OrdersService\Contracts\CompleteOrder\CompleteOrderResponse.cs" />
+    <Compile Include="Interfaces\OrdersService\Contracts\DiscardOrder\DiscardOrderResponse.cs" />
+    <Compile Include="Interfaces\OrdersService\Contracts\GetOrder\GetOrderRequest.cs" />
+    <Compile Include="Interfaces\OrdersService\Contracts\CreateOrder\CreateOrderResponse.cs" />
+    <Compile Include="Interfaces\OrdersService\Contracts\GetOrder\GetOrdersResponse.cs" />
+    <Compile Include="Interfaces\OrdersService\Contracts\OrderDetails.cs" />
     <Compile Include="Interfaces\OrdersService\IOrdersService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\OrdersService\Contracts\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

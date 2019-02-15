@@ -11,7 +11,7 @@ namespace WcfServiceSample.BaseContracts
     public class BaseResponse
     {
         [DataMember]
-        public bool IsValid { get; set; }
+        public bool IsSuccess { get; set; }
 
         [DataMember]
         public ErrorDetails Error { get; set; }

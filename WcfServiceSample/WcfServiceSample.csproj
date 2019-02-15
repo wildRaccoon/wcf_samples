@@ -67,6 +67,15 @@
     <Compile Include="BaseContracts\BaseRequest.cs" />
     <Compile Include="BaseContracts\BaseResponse.cs" />
     <Compile Include="BaseContracts\ErrorDetails.cs" />
+    <Compile Include="DataMock\AccountData.cs" />
+    <Compile Include="DataMock\AccountTable.cs" />
+    <Compile Include="DataMock\eUserRole.cs" />
+    <Compile Include="DataMock\SessionData.cs" />
+    <Compile Include="DataMock\SessionStorage.cs" />
+    <Compile Include="Implementation\AccountService.cs" />
+    <Compile Include="Implementation\OrdersService.cs" />
+    <Compile Include="Interfaces\AccountService\Contracts\CheckToken\CheckTokenRequest.cs" />
+    <Compile Include="Interfaces\AccountService\Contracts\CheckToken\CheckTokenResponse.cs" />
     <Compile Include="Interfaces\AccountService\Contracts\Login\LoginRequest.cs" />
     <Compile Include="Interfaces\AccountService\Contracts\Login\LoginResponse.cs" />
     <Compile Include="Interfaces\AccountService\IAccountService.cs" />

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Web;
+﻿using System.Runtime.Serialization;
 using WcfServiceSample.BaseContracts;
 
 namespace WcfServiceSample.Interfaces.AccountService.Contracts.Login
@@ -12,5 +8,8 @@ namespace WcfServiceSample.Interfaces.AccountService.Contracts.Login
     {
         [DataMember]
         public string Token { get; set; }
+
+        [DataMember]
+        public string UserId { get; set; }
     }
 }

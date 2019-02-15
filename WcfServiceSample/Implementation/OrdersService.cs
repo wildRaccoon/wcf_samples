@@ -62,6 +62,19 @@ namespace WcfServiceSample.Implementation
                 return resp;
             }
 
+            if (acc.UserRole != eUserRole.Manager && acc.UserRole != eUserRole.Admin)
+            {
+                return new CompleteOrderResponse()
+                {
+                    Error = new ErrorDetails()
+                    {
+                        Code = eErrorCodes.NotAllowedRequest,
+                        Message = eErrorCodes.NotAllowedRequesMessage
+                    },
+                    IsSuccess = false
+                };
+            }
+
             var order = OrdersTable.Instance.Find(i => i.Id == request.OrderId);
 
 
@@ -88,6 +101,19 @@ namespace WcfServiceSample.Implementation
             if (resp != null)
             {
                 return resp;
+            }
+
+            if (acc.UserRole != eUserRole.Manager && acc.UserRole != eUserRole.Admin)
+            {
+                return new CreateOrderResponse()
+                {
+                    Error = new ErrorDetails()
+                    {
+                        Code = eErrorCodes.NotAllowedRequest,
+                        Message = eErrorCodes.NotAllowedRequesMessage
+                    },
+                    IsSuccess = false
+                };
             }
 
             var maxId = OrdersTable.Instance.Max(i => i.Id) + 1;
@@ -120,6 +146,18 @@ namespace WcfServiceSample.Implementation
             if (resp != null)
             {
                 return resp;
+            }
+
+            if (acc.UserRole != eUserRole.Admin)
+            {
+                return new DiscardOrderResponse()
+                {
+                    Error = new ErrorDetails() {
+                        Code = eErrorCodes.NotAllowedRequest,
+                        Message = eErrorCodes.NotAllowedRequesMessage
+                    },
+                    IsSuccess = false
+                };
             }
 
             var order = OrdersTable.Instance.Find(i => i.Id == request.OrderId);

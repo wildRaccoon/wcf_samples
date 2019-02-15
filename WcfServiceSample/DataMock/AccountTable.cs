@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace WcfServiceSample.DataMock
 {
@@ -12,25 +9,29 @@ namespace WcfServiceSample.DataMock
             new AccountData(){
                 AuthToken = "token1",
                 User = "admin",
-                UserRole = eUserRole.Admin
+                UserRole = eUserRole.Admin,
+                Id = 1
             },
 
             new AccountData(){
                 AuthToken = "token2",
                 User = "manager",
-                UserRole = eUserRole.Manager
+                UserRole = eUserRole.Manager,
+                Id = 2
             },
 
             new AccountData(){
                 AuthToken = "token3",
                 User = "guest1",
-                UserRole = eUserRole.Guest
+                UserRole = eUserRole.Guest,
+                Id = 3
             },
 
             new AccountData(){
                 AuthToken = "token4",
                 User = "guest2",
-                UserRole = eUserRole.Guest
+                UserRole = eUserRole.Guest,
+                Id = 4
             },
         };
     }

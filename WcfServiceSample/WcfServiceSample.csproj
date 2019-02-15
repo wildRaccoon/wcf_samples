@@ -61,6 +61,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="API\OrdersService.svc" />
+    <Content Include="API\AccountService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -84,9 +86,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="API\AccountService\" />
-    <Folder Include="API\OrdersService\" />
-    <Folder Include="App_Data\" />
     <Folder Include="Interfaces\OrdersService\Contracts\" />
   </ItemGroup>
   <ItemGroup>

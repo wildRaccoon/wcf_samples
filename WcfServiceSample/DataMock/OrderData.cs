@@ -11,9 +11,9 @@ namespace WcfServiceSample.DataMock
 
         public int UserId { get; set; }
 
-        public DateTime Created { get; set; }
+        public DateTime? Created { get; set; }
 
-        public DateTime Completed { get; set; }
+        public DateTime? Completed { get; set; }
 
         public eOrderStatus Status { get; set; }
     }

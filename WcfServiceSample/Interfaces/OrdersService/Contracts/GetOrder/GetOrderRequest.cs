@@ -8,9 +8,6 @@ namespace WcfServiceSample.Interfaces.OrdersService.Contracts
     public class GetOrdersRequest : BaseRequest
     {
         [DataMember]
-        public int UserId { get; set; }
-
-        [DataMember]
-        public eOrderStatus Status { get; set; }
+        public eOrderStatus Status { get; set; } = eOrderStatus.None;
     }
 }

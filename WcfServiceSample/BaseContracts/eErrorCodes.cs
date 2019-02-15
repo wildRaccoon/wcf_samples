@@ -13,8 +13,15 @@ namespace WcfServiceSample.BaseContracts
         public const int ServerError = 1001;
         public const string ServerErrorMessage = "Server error";
 
+        public const int NotAllowedRequest = 1002;
+        public const string NotAllowedRequesMessage = "Invalid Request";
+
         //20xx - login errors
         public const int LoginFailed = 2001;
         public const string LoginFailedMessage = "Invalid user or auth token. Please try again";
+
+        //30xx orders service
+        public const int OrderNotFound = 3001;
+        public const string OrderNotFoundMessage = "Order not found";
     }
 }

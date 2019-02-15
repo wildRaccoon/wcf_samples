@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="BaseContracts\BaseRequest.cs" />
     <Compile Include="BaseContracts\BaseResponse.cs" />
+    <Compile Include="BaseContracts\eErrorCodes.cs" />
     <Compile Include="BaseContracts\ErrorDetails.cs" />
     <Compile Include="DataMock\AccountData.cs" />
     <Compile Include="DataMock\AccountTable.cs" />

@@ -6,7 +6,7 @@ namespace WcfServiceSample.Interfaces.AccountService.Contracts.CheckToken
     public class CheckTokenRequest
     {
         [DataMember]
-        public string UserId { get; set; }
+        public int UserId { get; set; }
 
         [DataMember]
         public string SessionToken { get; set; }

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Web;
 using WcfServiceSample.BaseContracts;
 using WcfServiceSample.DataMock;
 using WcfServiceSample.Interfaces.AccountService;
@@ -17,11 +14,85 @@ namespace WcfServiceSample.Implementation
         {
         }
 
+        #region Check Token
         public CheckTokenResponse CheckToken(CheckTokenRequest request)
         {
-            throw new NotImplementedException();
-        }
+            try
+            {
+                if (string.IsNullOrEmpty(request.SessionToken) || request.UserId <= 0)
+                {
+                    return new CheckTokenResponse()
+                    {
+                        IsSuccess = false,
+                        Error = new ErrorDetails()
+                        {
+                            Code = eErrorCodes.InvalidRequest,
+                            Message = eErrorCodes.InvalidRequesMessage
+                        }
+                    };
+                }
 
+                var acc = AccountTable.Instance.Find(m => m.Id == request.UserId);
+
+                if (acc == null)
+                {
+                    Trace.WriteLine($"Error when execute CheckToken: user not found {request.UserId}");
+                    return new CheckTokenResponse()
+                    {
+                        IsSuccess = false,
+                        Error = new ErrorDetails()
+                        {
+                            Code = eErrorCodes.InvalidRequest,
+                            Message = eErrorCodes.InvalidRequesMessage
+                        }
+                    };
+                }
+
+                SessionData session = null;
+                if (SessionStorage.Instance.TryGetValue(acc.Id, out session) && session?.SessionToken == request.SessionToken)
+                {
+                    var newSession = new SessionData(session)
+                    {
+                        LastCheck = DateTime.Now
+                    };
+
+                    SessionStorage.Instance.TryUpdate(acc.Id, newSession, session);
+
+                    return new CheckTokenResponse()
+                    {
+                        IsSuccess = true
+                    };
+                }
+
+                Trace.WriteLine($"Error when execute CheckToken: session not found {request.UserId}:{request.SessionToken}");
+                return new CheckTokenResponse()
+                {
+                    IsSuccess = false,
+                    Error = new ErrorDetails()
+                    {
+                        Code = eErrorCodes.InvalidRequest,
+                        Message = eErrorCodes.InvalidRequesMessage
+                    }
+                };
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine($"Error when execute CheckToken {ex}");
+
+                return new CheckTokenResponse()
+                {
+                    IsSuccess = false,
+                    Error = new ErrorDetails()
+                    {
+                        Code = eErrorCodes.ServerError,
+                        Message = eErrorCodes.ServerErrorMessage
+                    }
+                };
+            }
+        } 
+        #endregion
+
+        #region Login
         public LoginResponse Login(LoginRequest request)
         {
             try
@@ -31,7 +102,8 @@ namespace WcfServiceSample.Implementation
                     return new LoginResponse()
                     {
                         IsSuccess = false,
-                        Error = new ErrorDetails() {
+                        Error = new ErrorDetails()
+                        {
                             Code = eErrorCodes.InvalidRequest,
                             Message = eErrorCodes.InvalidRequesMessage
                         }
@@ -56,7 +128,7 @@ namespace WcfServiceSample.Implementation
                 SessionData session = null;
                 if (SessionStorage.Instance.TryGetValue(acc.Id, out session))
                 {
-                    if((DateTime.Now - session.LastCheck) > SessionStorage.SessionExpired)
+                    if ((DateTime.Now - session.LastCheck) > SessionStorage.SessionExpired)
                     {
                         session.SessionToken = Guid.NewGuid().ToString();
                         session.LoginTime = DateTime.Now;
@@ -75,7 +147,7 @@ namespace WcfServiceSample.Implementation
                     };
                 }
 
-                SessionStorage.Instance.AddOrUpdate(acc.Id,session, (id,s) => { return session; });
+                SessionStorage.Instance.AddOrUpdate(acc.Id, session, (id, s) => { return session; });
 
                 return new LoginResponse()
                 {
@@ -99,6 +171,7 @@ namespace WcfServiceSample.Implementation
                     }
                 };
             }
-        }
+        } 
+        #endregion
     }
 }

@@ -14,5 +14,17 @@ namespace WcfServiceSample.DataMock
         public DateTime LoginTime { get; set; }
 
         public DateTime LastCheck { get; set; }
+
+        public SessionData()
+        {
+        }
+
+        public SessionData(SessionData toClone)
+        {
+            this.LastCheck = toClone.LastCheck;
+            this.LoginTime = toClone.LoginTime;
+            this.SessionToken = toClone.SessionToken;
+            this.UserId = toClone.UserId;
+        }
     }
 }

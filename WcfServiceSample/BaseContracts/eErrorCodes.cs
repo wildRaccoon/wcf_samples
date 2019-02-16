@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace WcfServiceSample.BaseContracts
+﻿namespace WcfServiceSample.BaseContracts
 {
     public class eErrorCodes
     {
@@ -14,7 +9,7 @@ namespace WcfServiceSample.BaseContracts
         public const string ServerErrorMessage = "Server error";
 
         public const int NotAllowedRequest = 1002;
-        public const string NotAllowedRequesMessage = "Invalid Request";
+        public const string NotAllowedRequesMessage = "Not Allowed Request";
 
         //20xx - login errors
         public const int LoginFailed = 2001;

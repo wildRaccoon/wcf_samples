@@ -6,6 +6,7 @@ namespace WcfServiceSample.Interfaces.OrdersService.Contracts
     [DataContract]
     public class CreateOrderResponse : BaseResponse
     {
+        [DataMember]
         public OrderDetails Order { get; set; }
     }
 }

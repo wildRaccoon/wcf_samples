@@ -24,14 +24,14 @@ namespace WcfServiceSample.DataMock
                 UserId = 2
             },
             new OrderData{
-                Id = 1,
+                Id = 3,
                 Completed = DateTime.Now.AddMinutes(-1),
                 Created = DateTime.Now.AddMinutes(-2),
                 Status = eOrderStatus.Completed,
                 UserId = 2
             },
             new OrderData{
-                Id = 1,
+                Id = 4,
                 Completed = DateTime.Now.AddMinutes(-1),
                 Created = DateTime.MinValue,
                 Status = eOrderStatus.Created,

@@ -191,8 +191,7 @@ namespace WcfServiceSample.Implementation
             var query = from order in OrdersTable.Instance
                         join acc in AccountTable.Instance on order.UserId equals acc.Id
                         where
-                            (request.Status == eOrderStatus.None || request.Status == order.Status) &&
-                            (request.UserId == 0 || request.UserId == acc.Id)
+                            (request.Status == eOrderStatus.None || request.Status == order.Status)
                         select
                             new OrderDetails(order)
                             {

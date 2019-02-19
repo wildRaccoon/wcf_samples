@@ -2,7 +2,7 @@
 using WA.Contracts.Account.Messages.CheckToken;
 using WA.Contracts.Account.Messages.Login;
 
-namespace WA.Contracts.Account.AccountService
+namespace WA.Contracts.Account
 {
     [ServiceContract(Namespace = "http://wr.com/IAccountService")]
     public interface IAccountService

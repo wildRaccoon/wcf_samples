@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
+using System.Threading;
 using WA.Contracts.Orders;
 using WA.Contracts.Orders.Messages.CompleteOrder;
 using WA.Contracts.Orders.Messages.CreateOrder;
@@ -15,6 +16,8 @@ namespace WA.Services.Orders
         public OrdersService(ILogger<OrdersService> logger)
         {
             _logger = logger;
+
+            _logger.LogInformation($"OrdersService instance created on thread {Thread.CurrentThread.ManagedThreadId}");
         }
 
         public CompleteOrderResponse CompleteOrder(CompleteOrderRequest request)

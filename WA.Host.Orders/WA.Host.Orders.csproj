@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{6EEF27BF-88AD-43CB-ACC9-9095F70808D4}</ProjectGuid>
+    <ProjectGuid>{CCBD3F5F-64CE-43D0-8AAB-391F991C86E0}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WA.Host.Account</RootNamespace>
-    <AssemblyName>WA.Host.Account</AssemblyName>
+    <RootNamespace>WA.Host.Orders</RootNamespace>
+    <AssemblyName>WA.Host.Orders</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -93,7 +93,6 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
-    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -112,7 +111,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="API\AccountService.svc" />
+    <Content Include="API\OrdersService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -129,16 +128,19 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WA.Contracts.Orders\WA.Contracts.Orders.csproj">
+      <Project>{22695f2e-d1bd-4a9d-90cb-754c4763e8c4}</Project>
+      <Name>WA.Contracts.Orders</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WA.Host.Core\WA.Host.Core.csproj">
-      <Project>{8BB8FCC4-D349-4523-81A8-4C62B1725B8E}</Project>
+      <Project>{8bb8fcc4-d349-4523-81a8-4c62b1725b8e}</Project>
       <Name>WA.Host.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WA.Services.Account\WA.Services.Account.csproj">
-      <Project>{b10c8be7-347a-4576-931c-da19ddcccbff}</Project>
-      <Name>WA.Services.Account</Name>
+    <ProjectReference Include="..\WA.Services.Orders\WA.Services.Orders.csproj">
+      <Project>{EDCC5503-0970-46F1-B9B9-452CBFE88BFB}</Project>
+      <Name>WA.Services.Orders</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -152,9 +154,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50937</DevelopmentServerPort>
+          <DevelopmentServerPort>52767</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50937/</IISUrl>
+          <IISUrl>http://localhost:52767/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

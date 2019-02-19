@@ -48,13 +48,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WA.Orders\WA.Orders.csproj">
-      <Project>{22695f2e-d1bd-4a9d-90cb-754c4763e8c4}</Project>
-      <Name>WA.Orders</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\WA.Contracts.Orders\WA.Contracts.Orders.csproj">
+      <Project>{22695F2E-D1BD-4A9D-90CB-754C4763E8C4}</Project>
+      <Name>WA.Contracts.Orders</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

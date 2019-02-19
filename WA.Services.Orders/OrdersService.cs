@@ -1,10 +1,10 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
-using WA.Orders;
-using WA.Orders.Contracts.CompleteOrder;
-using WA.Orders.Contracts.CreateOrder;
-using WA.Orders.Contracts.DiscardOrder;
-using WA.Orders.Contracts.GetOrder;
+using WA.Contracts.Orders;
+using WA.Contracts.Orders.Messages.CompleteOrder;
+using WA.Contracts.Orders.Messages.CreateOrder;
+using WA.Contracts.Orders.Messages.DiscardOrder;
+using WA.Contracts.Orders.Messages.GetOrder;
 
 namespace WA.Services.Orders
 {

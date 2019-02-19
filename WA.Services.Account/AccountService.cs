@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
 using System.Threading;
-using WA.Account.AccountService;
-using WA.Account.Contracts.CheckToken;
-using WA.Account.Contracts.Login;
+using WA.Contracts.Account.AccountService;
+using WA.Contracts.Account.Messages.CheckToken;
+using WA.Contracts.Account.Messages.Login;
 
 namespace WA.Services.Account
 {

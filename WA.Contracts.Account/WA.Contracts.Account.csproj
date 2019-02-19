@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B10C8BE7-347A-4576-931C-DA19DDCCCBFF}</ProjectGuid>
+    <ProjectGuid>{3B6CF44B-36DE-45DB-A196-F17B503A2887}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WA.Services.Account</RootNamespace>
-    <AssemblyName>WA.Services.Account</AssemblyName>
+    <RootNamespace>WAContracts.Account</RootNamespace>
+    <AssemblyName>WA.Contracts.Account</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,11 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,16 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountService.cs" />
+    <Compile Include="Messages\CheckToken\CheckTokenRequest.cs" />
+    <Compile Include="Messages\CheckToken\CheckTokenResponse.cs" />
+    <Compile Include="eAccountErrorCodes.cs" />
+    <Compile Include="Messages\Login\LoginRequest.cs" />
+    <Compile Include="Messages\Login\LoginResponse.cs" />
+    <Compile Include="IAccountService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WA.Contracts.Account\WA.Contracts.Account.csproj">
-      <Project>{3B6CF44B-36DE-45DB-A196-F17B503A2887}</Project>
-      <Name>WA.Contracts.Account</Name>
+    <ProjectReference Include="..\WA.Contracts.Core\WA.Contracts.Core.csproj">
+      <Project>{b93c2154-4d45-413c-b4c2-6746abd35915}</Project>
+      <Name>WA.Contracts.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

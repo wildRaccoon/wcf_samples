@@ -2,6 +2,6 @@
 {
     public enum eAccountErrorCodes
     {
-        LoginFailed = 2001
+        AccountLocked = 2001      
     }
 }

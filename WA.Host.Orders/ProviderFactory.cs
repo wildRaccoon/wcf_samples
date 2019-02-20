@@ -8,7 +8,9 @@ namespace WA.Host.Orders
 {
     public class ProviderFactory : IProviderFactory
     {
-        public IServiceProvider GetProvider()
+        private static IServiceProvider ServiceProviderInstance { get; set; } = GetProviderInstance();
+
+        public static IServiceProvider GetProviderInstance()
         {
             //register all deps
             var sc = new ServiceCollection();
@@ -24,6 +26,13 @@ namespace WA.Host.Orders
             var sp = sc.BuildServiceProvider();
 
             return sp;
+        }
+
+
+
+        public IServiceProvider GetProvider()
+        {
+            return ServiceProviderInstance;
         }
     }
 }

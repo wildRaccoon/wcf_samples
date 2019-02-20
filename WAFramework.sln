@@ -31,6 +31,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Account", "Account", "{59C0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Orders", "Orders", "{17AAB010-A93D-478D-A7EB-ADBC7378522E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WA.Repository.Account", "WA.Repository.Account\WA.Repository.Account.csproj", "{A10BD933-73F4-4ECC-AFDF-6F3CE4BC22D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{CCBD3F5F-64CE-43D0-8AAB-391F991C86E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCBD3F5F-64CE-43D0-8AAB-391F991C86E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCBD3F5F-64CE-43D0-8AAB-391F991C86E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A10BD933-73F4-4ECC-AFDF-6F3CE4BC22D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A10BD933-73F4-4ECC-AFDF-6F3CE4BC22D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A10BD933-73F4-4ECC-AFDF-6F3CE4BC22D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A10BD933-73F4-4ECC-AFDF-6F3CE4BC22D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,6 +98,7 @@ Global
 		{22695F2E-D1BD-4A9D-90CB-754C4763E8C4} = {17AAB010-A93D-478D-A7EB-ADBC7378522E}
 		{8BB8FCC4-D349-4523-81A8-4C62B1725B8E} = {DE1EE39A-BB02-4BFC-AFE0-EF12D053EBD5}
 		{CCBD3F5F-64CE-43D0-8AAB-391F991C86E0} = {17AAB010-A93D-478D-A7EB-ADBC7378522E}
+		{A10BD933-73F4-4ECC-AFDF-6F3CE4BC22D0} = {59C084FB-E59D-438D-BBEB-B00A94164BDC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {29DC8625-80EB-405B-B1CA-9CC4F7138BD8}

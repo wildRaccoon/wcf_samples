@@ -10,5 +10,8 @@ namespace WA.Contracts.Account.Messages.CheckToken
 
         [DataMember]
         public string SessionToken { get; set; }
+
+        [DataMember]
+        public string RequestFrom { get; set; }
     }
 }

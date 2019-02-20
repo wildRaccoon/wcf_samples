@@ -6,9 +6,12 @@ namespace WA.Contracts.Account.Messages.Login
     public class LoginRequest
     {
         [DataMember]
-        public string User { get; set; }
+        public string Login { get; set; }
 
         [DataMember]
-        public string ApplicationToken { get; set; }
+        public string Password { get; set; }
+
+        [DataMember]
+        public string RequestFrom { get; set; }
     }
 }

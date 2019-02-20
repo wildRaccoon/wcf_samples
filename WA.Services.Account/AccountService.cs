@@ -168,6 +168,7 @@ namespace WA.Services.Account
                 if (user.Password != request.Password)
                 {
                     status.FailLoginCount++;
+                    status.LastLoginFrom = request.RequestFrom;
                     status.IsLocked = status.FailLoginCount >= _settings.MaximuFailedLoginCount;
                     _dataContext.UserStatuses.Update(status);
 

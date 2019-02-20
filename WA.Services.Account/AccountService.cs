@@ -114,7 +114,9 @@ namespace WA.Services.Account
             try
             {
                 #region basic checks
-                if (string.IsNullOrEmpty(request.Login) || string.IsNullOrEmpty(request.Password))
+                if (string.IsNullOrEmpty(request.Login) 
+                    || string.IsNullOrEmpty(request.Password) 
+                    || string.IsNullOrEmpty(request.RequestFrom))
                 {
                     return new LoginResponse()
                     {
@@ -156,10 +158,11 @@ namespace WA.Services.Account
                         IsLocked = false,
                         UserId = user.Id,
                         LastLoginOn = DateTime.MinValue,
-                        LastLoginFrom = ""
+                        LastLoginFrom = request.RequestFrom
                     };
 
                     _dataContext.UserStatuses.Add(status);
+                    _dataContext.SaveChanges();
                 }
 
                 if (user.Password != request.Password)
@@ -224,6 +227,7 @@ namespace WA.Services.Account
                         UserId = user.Id
                     };
                     _dataContext.Sessions.Add(session);
+                    _dataContext.SaveChanges();
                 }
 
                 session.LastCheck = DateTime.Now;

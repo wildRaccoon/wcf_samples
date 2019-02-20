@@ -104,7 +104,7 @@ namespace WA.Test.Account
                 Assert.IsNotNull(user);
 
                 var status = user.Status;
-                Assert.IsNotNull(user);
+                Assert.IsNotNull(status);
 
                 Assert.AreEqual(1, status.FailLoginCount);
                 Assert.IsFalse(status.IsLocked);
@@ -155,7 +155,7 @@ namespace WA.Test.Account
                 Assert.IsNotNull(user);
 
                 var status = accountDataContext.UserStatuses.Single(us => us.UserId == user.Id);
-                Assert.IsNotNull(user);
+                Assert.IsNotNull(status);
 
                 Assert.AreEqual(1, status.FailLoginCount);
                 Assert.IsFalse(status.IsLocked);
@@ -189,7 +189,7 @@ namespace WA.Test.Account
                 Assert.AreEqual("Invalid Request", resp.Error.Message);
 
                 status = accountDataContext.UserStatuses.Single(us => us.UserId == user.Id);
-                Assert.IsNotNull(user);
+                Assert.IsNotNull(status);
 
                 Assert.AreEqual(3, status.FailLoginCount);
                 Assert.IsTrue(status.IsLocked);
@@ -208,11 +208,66 @@ namespace WA.Test.Account
                 Assert.AreEqual("Account Locked", resp.Error.Message);
 
                 status = accountDataContext.UserStatuses.Single(us => us.UserId == user.Id);
-                Assert.IsNotNull(user);
+                Assert.IsNotNull(status);
 
                 Assert.AreEqual(3, status.FailLoginCount);
                 Assert.IsTrue(status.IsLocked);
                 Assert.AreEqual(status.LastLoginFrom, req.RequestFrom);
+            }
+        }
+
+        [TestMethod]
+        public void LoginSuccess()
+        {
+            var options = new DbContextOptionsBuilder<AccountDataContext>()
+                    .UseInMemoryDatabase("LoginSuccess")
+                    .Options;
+
+            using (var accountDataContext = new AccountDataContext(options))
+            {
+                var req = new LoginRequest()
+                {
+                    Login = "l",
+                    Password = "pl",
+                    RequestFrom = "rf"
+                };
+
+                accountDataContext.Users.Add(new UserData()
+                {
+                    Id = 1,
+                    Login = req.Login,
+                    Password = req.Password
+                });
+                accountDataContext.SaveChanges();
+
+                var logger = new Moq.Mock<ILogger<AccountService>>();
+
+                var service = new AccountService(logger.Object, accountDataContext, new AccountServiceSettings()
+                {
+                    MaximuFailedLoginCount = 3
+                });
+
+                var resp = service.Login(req);
+
+                Assert.IsNotNull(resp);
+                Assert.IsNotNull(resp.Token);
+                Assert.IsTrue(resp.IsSuccess);
+                Assert.IsNull(resp.Error);
+
+                var user = accountDataContext.Users.Single(u => u.Login == req.Login);
+                Assert.IsNotNull(user);
+                Assert.AreEqual(user.Id, resp.UserId);
+
+                var status = accountDataContext.UserStatuses.Single(us => us.UserId == user.Id);
+                Assert.IsNotNull(status);
+                Assert.AreEqual(0, status.FailLoginCount);
+                Assert.IsFalse(status.IsLocked);
+                Assert.AreEqual(status.LastLoginFrom, req.RequestFrom);
+
+                var session = accountDataContext.Sessions.Single(s => s.SessionToken == resp.Token);
+                Assert.IsNotNull(session);
+                Assert.AreEqual(user.Id,session.UserId);
+                Assert.AreEqual(req.RequestFrom, session.ConnectedFrom);
             }
         }
     }

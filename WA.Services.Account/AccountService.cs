@@ -211,8 +211,8 @@ namespace WA.Services.Account
                 var session = user.Session;
 
                 //different place or exppired
-                if (session?.LastCheck - DateTime.Now > _settings.SessionExpirationTime
-                    || session?.ConnectedFrom != request.RequestFrom)
+                if (session != null && (session.LastCheck - DateTime.Now > _settings.SessionExpirationTime
+                    || session.ConnectedFrom != request.RequestFrom))
                 {
                     _dataContext.Sessions.Remove(session);
                     session = null;

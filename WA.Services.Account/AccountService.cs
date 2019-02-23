@@ -31,7 +31,9 @@ namespace WA.Services.Account
             try
             {
                 #region basic checks
-                if (string.IsNullOrEmpty(request.SessionToken) || request.UserId <= 0)
+                if (string.IsNullOrEmpty(request.SessionToken) 
+                    || string.IsNullOrEmpty(request.RequestFrom) 
+                    || request.UserId <= 0)
                 {
                     return new CheckTokenResponse()
                     {
@@ -39,7 +41,7 @@ namespace WA.Services.Account
                         Error = new ErrorDetails()
                         {
                             Code = (int)eErrorCodes.InvalidRequest,
-                            Message = "Invallid request"
+                            Message = "Invalid Request"
                         }
                     };
                 }
@@ -62,10 +64,16 @@ namespace WA.Services.Account
 
                 var session = user.Session;
 
-                if (session?.SessionToken != request.SessionToken
-                    || session?.ConnectedFrom != request.RequestFrom)
+                if (session == null
+                    || session.SessionToken != request.SessionToken
+                    || session.ConnectedFrom != request.RequestFrom
+                    || DateTime.Now - session.LastCheck > _settings.SessionExpirationTime)
                 {
-                    _dataContext.Sessions.Remove(session);
+                    if (session != null)
+                    {
+                        _dataContext.Sessions.Remove(session);
+                    }
+
                     return new CheckTokenResponse()
                     {
                         IsSuccess = false,

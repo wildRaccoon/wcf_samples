@@ -24,6 +24,7 @@ namespace WA.Host.Account
             });
 
             sc.AddDbContext<AccountDataContext>(c => c.UseInMemoryDatabase("AccountStorage"));
+            sc.AddSingleton<AccountServiceSettings>();
             sc.AddTransient<AccountService>();
 
             var sp = sc.BuildServiceProvider();
